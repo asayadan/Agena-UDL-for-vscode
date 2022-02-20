@@ -1,0 +1,25 @@
+{
+    "name": "agn",
+    "displayName": "Agena UDL",
+    "description": "Agena UDL",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.64.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "agena",
+            "aliases": ["Agena", "agena"],
+            "extensions": [".agn"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "agena",
+            "scopeName": "source.agn",
+            "path": "./syntaxes/agena.tmLanguage.json"
+        }]
+    }
+}

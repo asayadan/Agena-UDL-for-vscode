@@ -1,0 +1,136 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Agena",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#saved_names"
+		},
+		{
+			"include": "#variables"
+		}
+
+	],
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.number-sign.agena",
+				"begin": "#",
+				"end": "\\n"
+				
+			}]
+		},
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operators.agena",
+				"match":"\\(|\\)|\\[|\\]|\\+|-|\\*|%|\\^|/|::|:-|\\+:=|-:=|\\*:=|:=|\\:=|\\%:=|\\*\\*|/|\\*%|/%|\\+%|-%|\\|\\b(in)\\b|\\|\\||~|~~|%|%%|\\^\\^|==|~=|{|}|:|::|:-|\\.|\\?-|\\+\\+|--|//|&|\\||;|\\,| in "
+			}]
+		},
+		"saved_names":{
+			"patterns":[
+				{
+					"include": "#saved_functions"
+				},
+				{
+					"include":"#saved_modules"
+				}
+			]
+		},
+		"saved_modules": {
+			"name": "support.class.agena",
+			"match":"\\b(io|os|Memory|Arithmetic|Flow|FunctionCalls)\\b"
+		},
+		"saved_functions":{
+			"patterns": [{
+				"name":	"support.function.agena",
+				"match": "\\b(print|tonumber|size|contains|exponent|writeline|close|readlines|open|list)\\b"
+			}]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.agena",
+				"match": "\\b(if|while|for|return|run|elif|fi|od|do|onsuccess|to|by|downto|skip|break|redo|relaunch|end|case|esac|is|then|create|from|fall)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.agena",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.agena",
+					"match": "\\\\."
+				}
+			]
+		},
+		"variables":{
+			"patterns":[
+					{
+						"include": "#var_type"
+					},
+					{
+						"include": "#var_modifier"
+					},
+					{
+						"include": "#function_decl"
+					}
+				]
+		},
+		"var_type":{
+			"patterns": [{
+				"begin":"\\b(table|set|sequence)\\b",
+				"end": ";|:=",
+				"beginCaptures": {
+					"1":{
+						"name": "storage.type.agena"
+					}
+				},
+				"endCaptures": {
+					"1":{
+						"name":"keyword.operators.agena"
+					}
+				}
+			}]
+		},
+		"var_modifier":{
+			"name":"storage.modifier.agena",
+			"match":"\\b(constant|local)\\b"
+		}, 	
+		"function_decl":{
+			"begin": "((\\w*\\.?)*)(\\s*:=\\s*)(proc\\(((\\w*(\\,\\s*)?)*|\\?)\\)\\s*)",
+			"end":"(is)",
+			"beginCaptures": {
+				"1":{
+					"name": "entity.name.function.agena"
+				},
+				"3":{
+					"name":"keyword.operators.agena"
+				},
+				"4":{
+					"name": "storage.type.function.agena"
+				},
+				"5":{
+					"name": "variable.parameters"
+				}
+			},
+			"endCaptures": {
+				"1":{
+					"name":"keyword.control.agena"
+				}
+			}
+		}
+
+	},
+	"scopeName": "source.agn"
+}
