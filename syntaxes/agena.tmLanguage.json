@@ -64,15 +64,39 @@
 			}]
 		},
 		"strings": {
-			"name": "string.quoted.double.agena",
-			"begin": "'",
-			"end": "'",
-			"patterns": [
+			"patterns":[
 				{
-					"name": "constant.character.escape.agena",
-					"match": "\\\\."
-				}
-			]
+				"include" :"#single_q"
+			},
+			{
+				"include": "#double_q"
+			}]
+		},
+		"single_q":{
+			"patterns": [{
+				"name": "string.quoted.single.agena",
+				"begin": "'",
+				"end": "'",
+				"patterns": [
+					{
+						"name": "constant.character.escape.agena",
+						"match": "\\\\."
+					}
+				]
+			}]
+		},
+		"double_q":{
+			"patterns": [{
+				"name": "string.quoted.double.agena",
+				"begin": "\"",
+				"end": "\"",
+				"patterns": [
+					{
+						"name": "constant.character.escape.agena",
+						"match": "\\\\."
+					}
+				]
+			}]
 		},
 		"variables":{
 			"patterns":[
