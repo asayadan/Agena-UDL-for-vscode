@@ -54,7 +54,7 @@
 		"saved_functions":{
 			"patterns": [{
 				"name":	"support.function.agena",
-				"match": "\\b(print|tonumber|size|contains|exponent|writeline|close|readlines|open|list)\\b"
+				"match": "\\b(print|tonumber|size|contains|exponent|writeline|close|readlines|open|list|sin|cos|arcsin|root)\\b"
 			}]
 		},
 		"keywords": {
@@ -132,7 +132,7 @@
 			"match":"\\b(constant|local)\\b"
 		}, 	
 		"function_decl":{
-			"begin": "((\\w*\\.?)*)(\\s*:=\\s*)(proc\\(((\\w*(\\,\\s*)?)*|\\?)\\)\\s*)",
+			"begin": "((\\w*\\.?)*)(\\s*:=\\s*)(proc\\(((\\w*(\\s*::\\s*[A-Za-z]*)?(\\,\\s*)?)*|\\?)\\)\\s*)",
 			"end":"(is)",
 			"beginCaptures": {
 				"1":{
