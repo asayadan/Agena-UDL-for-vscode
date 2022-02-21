@@ -34,7 +34,7 @@
 		"operators": {
 			"patterns": [{
 				"name": "keyword.operators.agena",
-				"match":"\\(|\\)|\\[|\\]|\\+|-|\\*|%|\\^|/|::|:-|\\+:=|-:=|\\*:=|:=|\\:=|\\%:=|\\*\\*|/|\\*%|/%|\\+%|-%|\\|\\b(in)\\b|\\|\\||~|~~|%|%%|\\^\\^|==|~=|{|}|:|::|:-|\\.|\\?-|\\+\\+|--|//|&|\\||;|\\,| in "
+				"match":"\\(|\\)|\\[|\\]|\\+|-|\\*|%|\\^|/|::|:-|\\+:=|-:=|\\*:=|:=|\\:=|\\%:=|\\*\\*|/|\\*%|/%|\\+%|-%|\\|\\b(in)\\b|\\|\\||~|~~|%|%%|\\^\\^|==|~=|{|}|:|::|:-|\\.|\\?-|\\+\\+|--|//|&|\\||;|\\,| in | or | and "
 			}]
 		},
 		"saved_names":{
@@ -54,13 +54,13 @@
 		"saved_functions":{
 			"patterns": [{
 				"name":	"support.function.agena",
-				"match": "\\b(print|tonumber|size|contains|exponent|writeline|close|readlines|open|list|sin|cos|arcsin|root)\\b"
+				"match": "\\b(print|tonumber|size|contains|exponent|writeline|close|readlines|open|close|list|sin|cos|arcsin|root|abs|unassigned|nargs|readlines|read)\\b"
 			}]
 		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.agena",
-				"match": "\\b(if|while|for|return|run|elif|fi|od|do|onsuccess|to|by|downto|skip|break|redo|relaunch|end|case|esac|is|then|create|from|fall)\\b"
+				"match": "\\b(else|if|while|for|return|run|elif|fi|od|do|onsuccess|to|by|downto|skip|break|redo|relaunch|end|case|esac|is|then|create|from|fall)\\b"
 			}]
 		},
 		"strings": {
@@ -133,7 +133,7 @@
 		}, 	
 		"function_decl":{
 			"begin": "((\\w*\\.?)*)(\\s*:=\\s*)(proc\\(((\\w*(\\s*::\\s*[A-Za-z]*)?(\\,\\s*)?)*|\\?)\\)\\s*)",
-			"end":"(is)",
+			"end":"(\\s*::\\s*[A-Za-z]*)?(is)",
 			"beginCaptures": {
 				"1":{
 					"name": "entity.name.function.agena"
@@ -150,6 +150,9 @@
 			},
 			"endCaptures": {
 				"1":{
+					"name": "meta.function.return-type.agena"
+				},
+				"2":{
 					"name":"keyword.control.agena"
 				}
 			}
